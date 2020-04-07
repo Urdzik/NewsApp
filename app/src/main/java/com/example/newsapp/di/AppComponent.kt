@@ -6,7 +6,6 @@ import com.example.newsapp.ui.home.HomeFragment
 import dagger.Component
 import javax.inject.Singleton
 
-// TODO add View Module
 @Singleton
 @Component(modules = [NetworkModule::class, MainPresenterModule::class])
 interface AppComponent {
