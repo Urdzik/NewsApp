@@ -1,7 +1,7 @@
 package com.example.newsapp.utils.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -22,16 +22,23 @@ class MainAdapter : ListAdapter<Articles, MainAdapter.NewsViewHolder>(DiffCallBa
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
       val item = getItem(position)
+
         holder.bind(item)
     }
 
     inner class NewsViewHolder(private val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(articles: Articles){
 
+            binding.titleItem.text = articles.title
+
+
+
             binding.root.setOnClickListener {
                 clickEvent.onNext(articles)
             }
+
         }
+
     }
 
 }

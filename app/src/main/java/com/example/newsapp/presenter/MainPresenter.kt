@@ -7,10 +7,7 @@ import com.example.newsapp.model.network.NewsModel
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
-class MainPresenter @Inject constructor(
-    private val bookView: NewsContact.View,
-    private val newsModel: NewsModel
-) : NewsContact.Presenter, NewsContact.Model.OnFinishedListener {
+class MainPresenter @Inject constructor(private val bookView: NewsContact.View, private val newsModel: NewsModel) : NewsContact.Presenter, NewsContact.Model.OnFinishedListener {
 
     lateinit var disposable: Disposable
 

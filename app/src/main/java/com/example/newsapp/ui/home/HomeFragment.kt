@@ -16,10 +16,10 @@ import javax.inject.Inject
 
 class HomeFragment : Fragment(), NewsContact.View {
 
-
+    private val adapter: MainAdapter = MainAdapter()
     @Inject
     lateinit var presenter: MainPresenter
-    lateinit var adapter: MainAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,21 +29,25 @@ class HomeFragment : Fragment(), NewsContact.View {
 
         App.appComponent.inject(this)
 
-        adapter = MainAdapter()
         binding.recycler.adapter = adapter
 
-
+        presenter.requestData()
 
         return binding.root
     }
 
     override fun retrieveData(listOfNews: List<Articles>) {
-        adapter.submitList(listOfNews)
+        Log.e("TAG", "${listOfNews.toString()}")
+            adapter.submitList(listOfNews)
     }
 
     override fun onError(t: Throwable) {
        Log.e("TAG", "Error in HomeFragment", t)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
 
 }

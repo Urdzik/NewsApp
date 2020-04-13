@@ -1,6 +1,7 @@
 package com.example.newsapp.model.network
 
 import android.annotation.SuppressLint
+import android.util.Log
 import com.example.newsapp.NewsContact
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -17,7 +18,7 @@ class NewsModel @Inject constructor(private val api: NewsApi) : NewsContact.Mode
             .subscribe({
                 onFinishedListener.onFinished(it.articles)
             }, {
-                onFinishedListener.onError(it)
+                onFinishedListener.onError(it.fillInStackTrace())
             })
 
 

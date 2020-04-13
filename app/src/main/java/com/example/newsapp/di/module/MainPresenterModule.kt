@@ -5,12 +5,15 @@ import com.example.newsapp.NewsContact
 import com.example.newsapp.model.network.NewsModel
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 
 @Module
 class MainPresenterModule(var view: NewsContact.View) {
 
     @Provides
     fun provideNewsContact(): NewsContact.View = view
+
+
 
 
 }
